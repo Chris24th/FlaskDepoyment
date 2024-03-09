@@ -6,7 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Initialize Firestore using the service account key
-firestore_client = firestore.Client.from_service_account_json("C:\\Users\\Barcial\\Documents\\BackendAPIsV2\\sshv1-fff-firebase-adminsdk-z3zxs-7d83d52c07.json")
+firestore_client = firestore.Client.from_service_account_json(firestore_client = firestore.Client.from_service_account_json("sshv1-fff-firebase-adminsdk-z3zxs-7d83d52c07.json"))
 
 # Maximum number of entries to keep
 MAX_ENTRIES = 100
