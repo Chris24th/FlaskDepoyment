@@ -1,7 +1,8 @@
 from flask import Flask, jsonify, request
 from google.cloud import firestore
 from google.cloud.exceptions import NotFound
-from datetime import datetime, timezone
+from datetime import datetime
+import pytz
 
 app = Flask(__name__)
 
@@ -13,6 +14,9 @@ firestore_client = firestore.Client.from_service_account_json(json_credentials_p
 
 # Maximum number of entries to keep
 MAX_ENTRIES = 100
+
+# Set the desired time zone
+desired_time_zone = pytz.timezone('Your_Time_Zone_Here')
 
 @app.route('/')
 def home():
@@ -42,7 +46,10 @@ def write_data():
         gyroscope = request.json.get('gyroscope')
 
         # Get current date and time in UTC
-        current_datetime = datetime.utcnow()
+        current_datetime_utc = datetime.utcnow()
+
+        # Convert UTC time to desired time zone
+        current_datetime = current_datetime_utc.replace(tzinfo=pytz.utc).astimezone(desired_time_zone)
 
         # Example: Write data to Firestore
         data_ref = firestore_client.collection('SSHv1').document('SensorData')
