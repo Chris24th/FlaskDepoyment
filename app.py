@@ -20,7 +20,7 @@ desired_time_zone = pytz.timezone('Your_Time_Zone_Here')
 
 @app.route('/')
 def home():
-    return "Welcome to the Firestore-Flask Integration!"
+    return "Welcome to the Firestore-Flask Integration po!"
 
 @app.route('/get_data')
 def get_data():
