@@ -16,7 +16,7 @@ firestore_client = firestore.Client.from_service_account_json(json_credentials_p
 MAX_ENTRIES = 100
 
 # Set the desired time zone
-desired_time_zone = pytz.timezone('Your_Time_Zone_Here')
+desired_time_zone = pytz.timezone('Asia/Manila')
 
 @app.route('/')
 def home():
