@@ -5,8 +5,11 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+# Assuming the JSON key file is in the same directory as your Flask app
+json_credentials_path = "sshv1-fff-firebase-adminsdk-z3zxs-7d83d52c07.json"
+
 # Initialize Firestore using the service account key
-firestore_client = firestore.Client.from_service_account_json(firestore_client = firestore.Client.from_service_account_json("sshv1-fff-firebase-adminsdk-z3zxs-7d83d52c07.json"))
+firestore_client = firestore.Client.from_service_account_json(json_credentials_path)
 
 # Maximum number of entries to keep
 MAX_ENTRIES = 100
