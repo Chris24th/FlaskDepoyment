@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from google.cloud import firestore
 from google.cloud.exceptions import NotFound
-from datetime import datetime
+from datetime import datetime, timezone
 
 app = Flask(__name__)
 
@@ -41,8 +41,8 @@ def write_data():
         acceleration = request.json.get('acceleration')
         gyroscope = request.json.get('gyroscope')
 
-        # Get current date and time
-        current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        # Get current date and time in UTC
+        current_datetime = datetime.utcnow()
 
         # Example: Write data to Firestore
         data_ref = firestore_client.collection('SSHv1').document('SensorData')
