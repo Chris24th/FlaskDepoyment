@@ -3,9 +3,10 @@ from google.cloud import firestore
 from google.cloud.exceptions import NotFound
 from datetime import datetime
 import pytz
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 # Assuming the JSON key file is in the same directory as your Flask app
 json_credentials_path = "sshv1-fff-firebase-adminsdk-z3zxs-7d83d52c07.json"
 
@@ -20,7 +21,7 @@ desired_time_zone = pytz.timezone('Asia/Manila')
 
 @app.route('/')
 def home():
-    return "Welcome to the Firestore-Flask Integration pew!"
+    return "Welcome to the Firestore-Flask Integration pewwwwwwww!"
 
 @app.route('/get_data')
 def get_data():
